@@ -1,12 +1,17 @@
 const userModel = require('../models/userModel');
 // grab custom error handler
 const { errorHandler } = require('../helpers/dbErrorHandler');
+// validator using express-validator
+const { userSignupValidator } = require('../utils/validator/validator');
 
 exports.signup = (req, res) => {
 	console.log('REQ BODY: ', req.body);
 	// take request body and create a new model from it
 	const user = new userModel(req.body);
 	// save into database after new user is registered
+
+	// validation middleware
+
 	user.save((err, user) => {
 		if (err) {
 			console.log(`ERROR: coming from signup route`);

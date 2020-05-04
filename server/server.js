@@ -4,6 +4,7 @@ const express = require('express');
 const PORT = process.env.PORT || 8000;
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const expressValidator = require('express-validator');
 const app = express();
 // const bodyParser = require('body-parser');
 
@@ -20,6 +21,9 @@ app.use(cookieParser());
 
 // morgan used for watch routes
 app.use(morgan('dev'));
+
+// express validation
+app.use(expressValidator());
 
 // database connections: START
 
