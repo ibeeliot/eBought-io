@@ -1,11 +1,18 @@
 <!--
 
 PACKAGES:
-*  yarn add express nodemon dotenv mongo mongoose uuidv1
+*  yarn add express nodemon dotenv mongo mongoose uuidv1 morgan
 
  -->
 
 <!-- *
+
+
+* PACKAGE NOTES:
+* morgan is used for viewing different routes
+
+
+
 
 Road Map
 

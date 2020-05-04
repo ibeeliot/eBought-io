@@ -1,0 +1,12 @@
+const express = require('express');
+const router = express.Router();
+
+const { signup } = require('../controllers/userController.js');
+
+router.get('/', (req, res) => {
+	res.send('HELLO');
+});
+
+router.post('/signup', signup);
+
+module.exports = router;
