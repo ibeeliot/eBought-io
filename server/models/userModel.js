@@ -64,6 +64,7 @@ userSchema.methods = {
 				.update(password)
 				.digest('hex');
 		} catch (err) {
+			console.log('Password is NOT found', err);
 			return '';
 		}
 	},
