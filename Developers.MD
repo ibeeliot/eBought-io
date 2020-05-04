@@ -1,8 +1,8 @@
 <!--
 
 PACKAGES:
-*  yarn add express nodemon dotenv mongo mongoose uuidv1 morgan
-
+*  yarn add express nodemon dotenv mongo mongoose uuidv1 morgan express-jwt express-validator
+-------- or checkout package.json for confirmation
  -->
 
 <!-- *

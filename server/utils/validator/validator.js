@@ -28,6 +28,7 @@ exports.userSignupValidator = (req, res, next) => {
 	// .matches(/[^\W]/)
 	// .withMessage('Pasword must at least one special character(i.e. $,!,@,%');
 
+	// validation errors exist ONLY .check functions return errors
 	// return the first error that accumulates from all the errors (like how response.rows[0] is where you navigate for response data)
 	const error = req.validationErrors();
 	if (error) {

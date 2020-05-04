@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 
-// virtual field for setting into dynamic object password an encrypted property
+// virtual field for setting into dynamic object password an encrypted property -> encryptPass called as hashed_password
 userSchema
 	.virtual('password')
 	.set(function(password) {
@@ -54,6 +54,12 @@ userSchema
 
 // schema methods for onto virtual methods
 userSchema.methods = {
+	//authenticates user method
+	authenticate: function(plaintext) {
+		return this.encryptPassword(plaintext) === this.hashed_password;
+	},
+
+	// encrypt password
 	encryptPassword: function(password) {
 		if (!password) return '';
 		try {
