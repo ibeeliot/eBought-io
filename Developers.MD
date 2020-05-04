@@ -10,6 +10,8 @@ PACKAGES:
 
 * PACKAGE NOTES:
 * morgan is used for viewing different routes
+* express-jwt adds protected routes // jsonwebtoken for signed token
+
 
 
 

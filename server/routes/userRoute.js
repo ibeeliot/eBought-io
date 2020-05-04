@@ -5,8 +5,9 @@ const {
 	login,
 	logout,
 	signup,
+	requiredLogin,
 	sendusers,
-} = require('../controllers/userController.js');
+} = require('../controllers/userAuth.js');
 
 const { userSignupValidator } = require('../utils/validator/validator');
 
@@ -25,5 +26,10 @@ router.post('/login', login);
 
 // for logging out users
 router.get('/logout', logout);
+
+// for authorizing admins
+router.get('/admin', requiredLogin, (req, res) => {
+	res.send('FOUND THE ADMIN');
+});
 
 module.exports = router;
