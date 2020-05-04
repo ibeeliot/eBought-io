@@ -1,5 +1,4 @@
 const userModel = require('../models/userModel');
-
 const jwt = require('jsonwebtoken'); // JWT to generate signed token
 const expressJwt = require('express-jwt'); // for authorization check
 
@@ -45,6 +44,17 @@ exports.login = (req, res, next) => {
 			},
 		});
 	});
+};
+
+// midleware for LOG OUT
+
+exports.logout = (req, res, next) => {
+	// console.log(`REQ BODY EMAIL:`, req.body.email);
+	// delete cookie by expiring it immediately
+	// cookies.set('t', { maxAge: 0 });
+	// cleaner method
+	res.clearCookie('t');
+	res.json({ message: 'Signout success' });
 };
 
 // middleware for SIGN UP

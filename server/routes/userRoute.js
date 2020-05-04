@@ -3,6 +3,7 @@ const router = express.Router();
 
 const {
 	login,
+	logout,
 	signup,
 	sendusers,
 } = require('../controllers/userController.js');
@@ -21,5 +22,8 @@ router.post('/signup', userSignupValidator, signup);
 
 // for logging in users
 router.post('/login', login);
+
+// for logging out users
+router.get('/logout', logout);
 
 module.exports = router;
