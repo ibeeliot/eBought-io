@@ -1,14 +1,11 @@
 // for usage of dotenv
 require('dotenv').config();
 const express = require('express');
-const path = require('path');
 const PORT = process.env.PORT || 8000;
-const app = express();
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-
-const userModel = require('./models/userModel');
+const app = express();
+// const bodyParser = require('body-parser');
 
 // import routes
 const userRouters = require('./routes/userRoute');
@@ -16,7 +13,7 @@ const userRouters = require('./routes/userRoute');
 // database
 const mongoose = require('mongoose');
 // parsing request bodies
-app.use(bodyParser());
+app.use(express.json());
 
 //cookie parsing
 app.use(cookieParser());
@@ -32,7 +29,7 @@ mongoose
 		useCreateIndex: true,
 	})
 	.then(() => {
-		console.log(`DB has connected...`);
+		console.log('DB has connected...');
 	});
 
 mongoose.connection.on('error', () => {
@@ -42,6 +39,9 @@ mongoose.connection.on('error', () => {
 // database connections: END
 
 // ROUTES: START
+app.get('/', (req, res) => {
+	res.status(200).json('HELLO');
+});
 
 app.use('/api', userRouters);
 

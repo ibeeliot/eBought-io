@@ -25,9 +25,7 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			trim: true,
 		},
-		salt: {
-			type: String,
-		},
+		salt: String,
 		role: {
 			type: Number,
 			// 0 = reg user, 1 = admin
@@ -47,13 +45,14 @@ userSchema
 	.virtual('password')
 	.set(function(password) {
 		this._password = password;
-		this.salt = uuidv1();
+		this.salt = uuid();
 		this.hashed_password = this.encryptPassword(password);
 	})
 	.get(function() {
 		return this._password;
 	});
 
+// schema methods for onto virtual methods
 userSchema.methods = {
 	encryptPassword: function(password) {
 		if (!password) return '';

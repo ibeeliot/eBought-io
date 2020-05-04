@@ -9,6 +9,6 @@ exports.signup = (req, res) => {
 		if (err) {
 			return res.status(400).json({ err });
 		}
-		res.json(user);
+		res.status(200).json(user);
 	});
 };
