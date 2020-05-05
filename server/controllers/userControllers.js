@@ -10,8 +10,8 @@ exports.userById = (req, res, next, id) => {
 			});
 
 		// req.locals.profile = user; // add to req object
-		res.locals.profile = user; // add to req object
-		console.log(`VIEW DATA RES LOCALS PROFILE: ${res.locals.profile}`);
+		req.profile = user; // add to req object
+		console.log(`VIEW DATA RES LOCALS PROFILE: ${res.profile}`);
 		return next();
 	});
 };

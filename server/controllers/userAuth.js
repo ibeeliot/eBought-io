@@ -86,7 +86,26 @@ exports.requiredLogin = expressJwt({
 	secret: process.env.JWT_SECRET,
 	userProperty: 'auth',
 });
-// return next();
+
+// is authorized middleware that checks if user has a profile, auth, and id MATCHES on both
+exports.isAuth = (req, res, next) => {
+	let user = req.profile && req.auth && req.profile._id == req.auth._id;
+	if (!user) {
+		return res.status(403).json({
+			error: 'Access denied',
+		});
+	}
+	return next();
+};
+
+exports.isAdmin = (req, res, next) => {
+	if (req.profile.role === 0) {
+		return res.status(403).json({
+			error: 'Admin resources! Access denied',
+		});
+	}
+	return next();
+};
 
 // TEST FOR SENDING ALL USERS
 exports.sendusers = (req, res, next) => {
