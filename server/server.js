@@ -9,7 +9,8 @@ const app = express();
 // const bodyParser = require('body-parser');
 
 // import routes
-const userRouters = require('./routes/userRoute');
+const userAuthRouter = require('./routes/userAuthRoutes');
+const userRouter = require('./routes/userRoutes');
 
 // database
 const mongoose = require('mongoose');
@@ -47,7 +48,9 @@ app.get('/', (req, res) => {
 	res.status(200).json('HELLO');
 });
 
-app.use('/api', userRouters);
+app.use('/api', userAuthRouter);
+
+app.use('/api', userRouter);
 
 // ROUTES: END
 
