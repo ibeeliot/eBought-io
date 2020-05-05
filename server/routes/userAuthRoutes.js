@@ -28,8 +28,11 @@ router.post('/login', login);
 router.get('/logout', logout);
 
 // for authorizing admins
-router.get('/admin', requiredLogin, (req, res) => {
-	res.send('FOUND THE ADMIN');
-});
+// router.get('/admin', requiredLogin, (req, res) => {
+// 	res.send('FOUND THE ADMIN');
+// });
+
+// test ROUTE for all users
+router.get('/users', sendusers);
 
 module.exports = router;

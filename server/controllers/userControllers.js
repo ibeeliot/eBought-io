@@ -1,7 +1,7 @@
 const userModal = require('../models/userModel');
 
 exports.userById = (req, res, next, id) => {
-	// smae as .findOne({_id: id}, (err, user)=>{})
+	// same as .findOne({_id: id}, (err, user)=>{})
 	userModal.findById(id).exec((err, user) => {
 		// if user is NOT found then send back error object
 		if (err || !user)

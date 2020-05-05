@@ -110,7 +110,8 @@ exports.isAdmin = (req, res, next) => {
 // TEST FOR SENDING ALL USERS
 exports.sendusers = (req, res, next) => {
 	console.log(`TEST FOR ALL USERS`);
-	const allusers = userModel.find().then((data) => data.json());
-	console.log(`${allusers} - ALL USERS `);
-	res.status(200).json(allusers);
+	userModel.find({}, (err, users) => {
+		console.log(`${users} - ALL USERS `);
+		res.status(200).json({ users });
+	});
 };
