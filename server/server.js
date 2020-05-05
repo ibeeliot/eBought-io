@@ -11,6 +11,7 @@ const app = express();
 // import routes
 const userAuthRouter = require('./routes/userAuthRoutes');
 const userRouter = require('./routes/userRoutes');
+const categoryRouter = require('./routes/categoryRoutes');
 
 // database
 const mongoose = require('mongoose');
@@ -51,6 +52,8 @@ app.get('/', (req, res) => {
 app.use('/api', userAuthRouter);
 
 app.use('/api', userRouter);
+
+app.use('/api', categoryRouter);
 
 // ROUTES: END
 
