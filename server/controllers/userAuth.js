@@ -81,7 +81,7 @@ exports.signup = (req, res) => {
 	});
 };
 
-// authentication admin with protected routes
+// authentication admin with protected routes // fucntion assigns the req.auth object to req.auth = secret
 exports.requiredLogin = expressJwt({
 	secret: process.env.JWT_SECRET,
 	userProperty: 'auth',

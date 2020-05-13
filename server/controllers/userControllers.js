@@ -11,7 +11,7 @@ exports.userById = (req, res, next, id) => {
 
 		// req.locals.profile = user; // add to req object
 		req.profile = user; // add to req object
-		console.log(`VIEW DATA RES LOCALS PROFILE: ${req.profile}`);
+		console.log(`VIEW DATA REQ PROFILE: ${req.profile}`);
 		return next();
 	});
 };
