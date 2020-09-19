@@ -1,6 +1,7 @@
 // for usage of dotenv
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const PORT = process.env.PORT || 8000;
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
@@ -13,6 +14,14 @@ const mongoose = require("mongoose");
 const userRoutes = require("./Routes/users");
 
 // ** Middleware: START
+// cors allow us to trust a specific origin so that we don't have to send preflights during connection request
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+
 // parsing request bodies
 app.use(express.json());
 

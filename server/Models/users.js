@@ -56,6 +56,7 @@ userSchema
     return this._password;
   });
 
+  // this is what's called an instance method (similar to class.prototype.whateverFunction)
 userSchema.methods = {
   authenticate: function (plainText) {
     return this.encryptPassword(plainText) === this.hashed_password;

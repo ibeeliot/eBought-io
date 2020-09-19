@@ -41,12 +41,19 @@ exports.signIn = (req, res, next) => {
     }
 
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-    // persist the token as 't' in cookie with expiry date
-    res.cookie("t", token, { expire: new Date() + 99999 });
-    // return response with user and token to frontend client
 
+    // persist the token as 't' in cookie with expiry date, and setting httpOnly to true in order to help prevent XSS (since no javascript code can be parsed as it's only looking for http protocol aka string)
+    res.cookie("t", token, { expire: new Date() + 99999, httpOnly: true });
+
+    // return response with user and token to frontend client
     const { _id, name, email, role } = user;
 
     return res.status(200).json({ token, user: { _id, name, email, role } });
   });
+};
+
+exports.signOut = (req, res) => {
+  // signing out will mean clearing the same cookie you made
+  res.clearCookie("t");
+  res.json({ message: "Signout success" });
 };
