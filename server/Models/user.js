@@ -52,11 +52,12 @@ userSchema
     this.salt = uuidv1();
     this.hashed_password = this.encryptPassword(password);
   })
+  // not sure when the getter method is called
   .get(function () {
     return this._password;
   });
 
-  // this is what's called an instance method (similar to class.prototype.whateverFunction)
+// this is what's called an instance method (similar to class.prototype.whateverFunction)
 userSchema.methods = {
   authenticate: function (plainText) {
     return this.encryptPassword(plainText) === this.hashed_password;

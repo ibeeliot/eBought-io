@@ -11,7 +11,10 @@ const app = express();
 const mongoose = require("mongoose");
 
 // import routes
-const userRoutes = require("./Routes/users");
+const authRoutes = require("./Routes/auth");
+const userRoutes = require("./Routes/user");
+const categoryRoutes = require("./Routes/category");
+const productRoutes = require("./Routes/product");
 
 // ** Middleware: START
 // cors allow us to trust a specific origin so that we don't have to send preflights during connection request
@@ -53,7 +56,13 @@ mongoose.connection.on("error", () => {
 
 // ROUTES: START
 // middleware -> more specific routes up first
-app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
+
+app.use("/api/user", userRoutes);
+
+app.use("/api/category", categoryRoutes);
+
+app.use("/api/product", productRoutes);
 
 app.use("/api", (req, res) => res.send("HELLO THERE FROM HOME"));
 
